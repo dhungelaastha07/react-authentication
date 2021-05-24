@@ -1,119 +1,69 @@
 *{
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-.main-parent{
+/* h1 style */
+
+h1{
+  font-size: 40px;
+}
+
+/* button style */
+
+button{
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px -2px black;
+  padding: 10px 15px;
+}
+
+
+.primary-button{
+  color: white;
+  font-size: 18px;
+  background-color: #0FAF51;
+}
+
+/* label style */
+
+label{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+/* input style */
+
+.input {
+  display: block;
+  margin: 10px 0;
+  border: 1px solid grey;
+  padding: 15px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px -2px grey;
+  color: grey;
+  font-size: 18px;
+}
+
+
+/* form style */
+
+.page{
   height: 100vh;
   margin: auto;
-  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.parent{
+.form-container{
   width: 400px;
 }
 
-.button{
-  padding: 15px;
-  width: 100%;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  box-shadow: 1px 1px 5px -2px black;
-}
-.sign-in{
+.form-title{
   text-align: center;
   margin-bottom: 30px;
-  font-size: 40px;
 }
 
-.open-id{
-
-  background-color: #0166D6;
-  
-}
-
-.option-text{
-  text-align: center;
-  color: grey;
-  font-size: 18px;
-  position: relative;
-  
-}
-
-.option-text::before, .option-text::after{
-  content: '';
-  height: 1px;
-  width: 80px;
-  display: block;
-  background-color: grey;
-  position: absolute;
-  top: 10px;
-}
-
-.option-text::after{
-  right: 0;
-}
-
-.email , .pw {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.input {
-    display: block;
-    margin-top: 10px;
-    border: 2px solid #F4B54F;
-    padding: 15px;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px -2px #F4B54F;
-    color: grey;
-    font-size: 18px;
-}
-
-.input-email{
-  margin-bottom: -10px;
-}
-
-.icon-text{
-  margin-top: 15px;
-}
-
-i{
-  margin-right: 10px;
-}
-
-.valid{
-  color: #F4B54F;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.passwords{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: -8px;
-}
-
-.forgot{
-  color: #5F9FE5;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.inputPassword{
-  margin-bottom: 40px;
-
-}
-
-.sign-button{
- 
-  background-color: #0FAF51;
-  
-  
-}

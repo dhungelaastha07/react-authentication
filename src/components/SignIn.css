@@ -1,0 +1,20 @@
+
+
+.signin-button{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.label-forgot-passwords{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -8px;
+}
+
+.forgot{
+    color: #5F9FE5;
+    font-weight: bold;
+    font-size: 18px;
+  }

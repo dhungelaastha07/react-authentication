@@ -1,0 +1,21 @@
+
+
+.buttons{
+  padding: 20px;
+  border-bottom: 1px solid grey;
+  
+
+}
+
+.sign-in-choice , .sign-up-choice {
+  width: 50%;
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+  background: none;
+  cursor: pointer;
+}
+
+.sign-in-choice{
+  border-right: 1px solid grey;
+}

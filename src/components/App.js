@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import SignIn from "./SignIn.js";
 import SignUp from "./SignUp.js";
-import "../index.css";
+import Dashboard from "./Dashboard.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,10 +10,12 @@ class App extends React.Component {
 
     this.state = {
       display: "",
+      userLoggedIn: false,
     };
 
     this.signInHandler = this.signInHandler.bind(this);
     this.signUpHandler = this.signUpHandler.bind(this);
+    this.updateLoggedInStatus = this.updateLoggedInStatus.bind(this);
   }
   signInHandler() {
     this.setState({
@@ -24,6 +26,12 @@ class App extends React.Component {
   signUpHandler() {
     this.setState({
       display: "signup",
+    });
+  }
+
+  updateLoggedInStatus(status) {
+    this.setState({
+      userLoggedIn: status,
     });
   }
 
@@ -40,7 +48,11 @@ class App extends React.Component {
         </div>
 
         {this.state.display === "signup" && <SignUp />}
-        {this.state.display === "signin" && <SignIn />}
+        {this.state.display === "signin" && (
+          <SignIn updateLoggedInStatus={this.updateLoggedInStatus} />
+        )}
+
+        {this.state.userLoggedIn && <Dashboard />}
       </div>
     );
   }

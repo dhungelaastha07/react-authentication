@@ -3,6 +3,7 @@ import React from "react";
 import SignIn from "./SignIn.js";
 import SignUp from "./SignUp.js";
 import Dashboard from "./Dashboard.js";
+import NavBar from "./NavBar";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,46 +14,34 @@ class App extends React.Component {
       userLoggedIn: false,
     };
 
-    this.signInHandler = this.signInHandler.bind(this);
-    this.signUpHandler = this.signUpHandler.bind(this);
-    this.updateLoggedInStatus = this.updateLoggedInStatus.bind(this);
-  }
-  signInHandler() {
-    this.setState({
-      display: "signin",
-    });
+    // this.updateLoggedInStatus = this.updateLoggedInStatus.bind(this);
+    this.updateDisplay = this.updateDisplay.bind(this);
   }
 
-  signUpHandler() {
+  // updateLoggedInStatus(status) {
+  //   this.setState({
+  //     userLoggedIn: status,
+  //   });
+  // }
+  updateDisplay(arg) {
     this.setState({
-      display: "signup",
+      display: arg,
     });
   }
-
-  updateLoggedInStatus(status) {
-    this.setState({
-      userLoggedIn: status,
-    });
-  }
-
   render() {
     return (
-      <div className="App">
-        <div className="buttons">
-          <button className="sign-in-choice" onClick={this.signInHandler}>
-            Sign In
-          </button>
-          <button className="sign-up-choice" onClick={this.signUpHandler}>
-            Sign Up
-          </button>
+      <div>
+        <NavBar
+          updateDisplay={this.updateDisplay}
+          userLoggedIn={this.state.userLoggedIn}
+        />
+        <div className="page-content">
+          {this.state.display === "signup" && <SignUp />}
+          {this.state.display === "signin" && (
+            <SignIn updateLoggedInStatus={this.updateLoggedInStatus} />
+          )}
+          {this.state.display === "dashboard" && <Dashboard />}
         </div>
-
-        {this.state.display === "signup" && <SignUp />}
-        {this.state.display === "signin" && (
-          <SignIn updateLoggedInStatus={this.updateLoggedInStatus} />
-        )}
-
-        {this.state.userLoggedIn && <Dashboard />}
       </div>
     );
   }

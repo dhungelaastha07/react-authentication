@@ -1,6 +1,22 @@
 *{
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+
+}
+
+body{
+  margin: 0;
+}
+
+/* container style */
+
+.container{
+  max-width: 1250px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+
 }
 
 /* h1 style */
@@ -50,12 +66,13 @@ label{
 
 /* form style */
 
-.page{
-  height: 100vh;
+.form-page{
+ 
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .form-container{

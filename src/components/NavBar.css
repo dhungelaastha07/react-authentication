@@ -1,0 +1,28 @@
+.nav-bar{
+    height: 100px;
+    overflow: hidden;  
+}
+
+.nav-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.title{
+    color: #0FAF51;   
+}
+
+.options{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-button{
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: none;
+}

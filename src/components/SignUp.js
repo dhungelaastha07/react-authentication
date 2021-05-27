@@ -50,7 +50,7 @@ class SignUp extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.submitHandler} className="page">
+      <form onSubmit={this.submitHandler} className="form-page">
         <div className="form-container">
           <h1 className="form-title"> Sign Up</h1>
 

@@ -14,15 +14,15 @@ class App extends React.Component {
       userLoggedIn: false,
     };
 
-    // this.updateLoggedInStatus = this.updateLoggedInStatus.bind(this);
+    this.updateLoggedInStatus = this.updateLoggedInStatus.bind(this);
     this.updateDisplay = this.updateDisplay.bind(this);
   }
 
-  // updateLoggedInStatus(status) {
-  //   this.setState({
-  //     userLoggedIn: status,
-  //   });
-  // }
+  updateLoggedInStatus(status) {
+    this.setState({
+      userLoggedIn: status,
+    });
+  }
   updateDisplay(arg) {
     this.setState({
       display: arg,
@@ -38,7 +38,10 @@ class App extends React.Component {
         <div className="page-content">
           {this.state.display === "signup" && <SignUp />}
           {this.state.display === "signin" && (
-            <SignIn updateLoggedInStatus={this.updateLoggedInStatus} />
+            <SignIn
+              updateDisplay={this.updateDisplay}
+              updateLoggedInStatus={this.updateLoggedInStatus}
+            />
           )}
           {this.state.display === "dashboard" && <Dashboard />}
         </div>

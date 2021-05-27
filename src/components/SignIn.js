@@ -51,7 +51,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div className="page">
+      <div className="form-page">
         <form onSubmit={this.submitHandler} className="form-container">
           <h1 className="form-title"> Sign In</h1>
 

@@ -7,15 +7,6 @@
 
 }
 
-.sign-in-choice , .sign-up-choice {
-  width: 50%;
-  border: none;
-  padding: 20px;
-  font-size: 20px;
-  background: none;
-  cursor: pointer;
-}
-
-.sign-in-choice{
-  border-right: 1px solid grey;
+.page-content{
+  height: calc(100vh - 100px);
 }

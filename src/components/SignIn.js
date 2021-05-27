@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./SignIn.css";
 
 class SignIn extends React.Component {
@@ -9,8 +9,7 @@ class SignIn extends React.Component {
     this.state = {
       emailInput: "",
       passwordInput: "",
-      submitMessage: "",
-      sucessfullySubmitted: false,
+      errorMessage: "",
     };
 
     this.inputHandler = this.inputHandler.bind(this);
@@ -25,28 +24,43 @@ class SignIn extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    axios
-      .post("https://logintest.free.beeceptor.com/", {
-        email: this.state.emailInput,
-        pasword: this.state.passwordInput,
-      })
-      .then((res) => {
-        this.setState({
-          submitMessage: "Successfully submitted",
-          sucessfullySubmitted: true,
-          emailInput: "",
-          passwordInput: "",
-        });
-        this.props.updateLoggedInStatus(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({
-          submitMessage: "Something went wrong, login failed",
-          sucessfullySubmitted: false,
-        });
-        this.props.updateLoggedInStatus(false);
+    const userArrayString = localStorage.getItem("users");
+    const userArray = !userArrayString ? [] : JSON.parse(userArrayString);
+    const matchedUser = userArray.find((item) => {
+      return item.email === this.state.emailInput;
+    });
+
+    if (matchedUser && matchedUser.passowrd === this.state.passwordInput) {
+      this.props.updateDisplay("dashboard");
+      this.props.updateLoggedInStatus(true);
+    } else {
+      this.setState({
+        errorMessage: "Login failed!!",
       });
+    }
+
+    // axios
+    //   .post("https://logintest.free.beeceptor.com/", {
+    //     email: this.state.emailInput,
+    //     pasword: this.state.passwordInput,
+    //   })
+    //   .then((res) => {
+    //     this.setState({
+    //       submitMessage: "Successfully submitted",
+    //       sucessfullySubmitted: true,
+    //       emailInput: "",
+    //       passwordInput: "",
+    //     });
+    //     this.props.updateLoggedInStatus(true);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     this.setState({
+    //       submitMessage: "Something went wrong, login failed",
+    //       sucessfullySubmitted: false,
+    //     });
+    //     this.props.updateLoggedInStatus(false);
+    //   });
   }
 
   render() {
@@ -58,7 +72,7 @@ class SignIn extends React.Component {
           <label> Email address</label>
           <input
             value={this.state.emailInput}
-            type="text"
+            type="email"
             className="input input-email"
             onChange={(e) => {
               this.inputHandler(e, "emailInput");
@@ -82,12 +96,7 @@ class SignIn extends React.Component {
             {" "}
             Sign In
           </button>
-          <p
-            style={{ color: this.state.sucessfullySubmitted ? "green" : "red" }}
-          >
-            {" "}
-            {this.state.submitMessage}{" "}
-          </p>
+          <p style={{ color: "red" }}> {this.state.errorMessage} </p>
         </form>
       </div>
     );

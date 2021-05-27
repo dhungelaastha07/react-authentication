@@ -25,28 +25,43 @@ class SignUp extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    axios
-      .post("https://logintest.free.beeceptor.com/", {
-        firstName: this.firstNameInput,
-        lastName: this.state.lastNameInput,
-        email: this.state.emailInput,
-        password: this.state.passwordInput,
-      })
-      .then((res) => {
-        this.setState({
-          successMessage: "Successfully signed up",
-          firstNameInput: "",
-          lastNameInput: "",
-          emailInput: "",
-          passwordInput: "",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({
-          successMessage: "Something is wrong. Please try again",
-        });
-      });
+
+    const users = {
+      firstName: this.state.firstNameInput,
+      lastName: this.state.lastNameInput,
+      email: this.state.emailInput,
+      passowrd: this.state.passwordInput,
+    };
+
+    const userArrayString = localStorage.getItem("users");
+    const userArray = !userArrayString ? [] : JSON.parse(userArrayString);
+
+    userArray.push(users);
+
+    localStorage.setItem("users", JSON.stringify(userArray));
+    console.log(users);
+    // axios
+    //   .post("https://logintest.free.beeceptor.com/", {
+    //     firstName: this.firstNameInput,
+    //     lastName: this.state.lastNameInput,
+    //     email: this.state.emailInput,
+    //     password: this.state.passwordInput,
+    //   })
+    //   .then((res) => {
+    //     this.setState({
+    //       successMessage: "Successfully signed up",
+    //       firstNameInput: "",
+    //       lastNameInput: "",
+    //       emailInput: "",
+    //       passwordInput: "",
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     this.setState({
+    //       successMessage: "Something is wrong. Please try again",
+    //     });
+    //   });
   }
   render() {
     return (

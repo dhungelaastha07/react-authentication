@@ -32,35 +32,13 @@ class SignIn extends React.Component {
 
     if (matchedUser && matchedUser.passowrd === this.state.passwordInput) {
       this.props.updateDisplay("dashboard");
-      this.props.updateLoggedInStatus(true);
+
+      this.props.updateLoggedInStatus(matchedUser);
     } else {
       this.setState({
         errorMessage: "Login failed!!",
       });
     }
-
-    // axios
-    //   .post("https://logintest.free.beeceptor.com/", {
-    //     email: this.state.emailInput,
-    //     pasword: this.state.passwordInput,
-    //   })
-    //   .then((res) => {
-    //     this.setState({
-    //       submitMessage: "Successfully submitted",
-    //       sucessfullySubmitted: true,
-    //       emailInput: "",
-    //       passwordInput: "",
-    //     });
-    //     this.props.updateLoggedInStatus(true);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     this.setState({
-    //       submitMessage: "Something went wrong, login failed",
-    //       sucessfullySubmitted: false,
-    //     });
-    //     this.props.updateLoggedInStatus(false);
-    //   });
   }
 
   render() {
@@ -96,7 +74,7 @@ class SignIn extends React.Component {
             {" "}
             Sign In
           </button>
-          <p style={{ color: "red" }}> {this.state.errorMessage} </p>
+          <p className="error-msg"> {this.state.errorMessage} </p>
         </form>
       </div>
     );

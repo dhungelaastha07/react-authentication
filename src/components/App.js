@@ -4,46 +4,58 @@ import SignIn from "./SignIn.js";
 import SignUp from "./SignUp.js";
 import Dashboard from "./Dashboard.js";
 import NavBar from "./NavBar";
+import Home from "./Home";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      display: "",
-      userLoggedIn: false,
+      display: "home",
+      currentLoggedInUser: null,
     };
 
     this.updateLoggedInStatus = this.updateLoggedInStatus.bind(this);
     this.updateDisplay = this.updateDisplay.bind(this);
   }
 
-  updateLoggedInStatus(status) {
+  updateLoggedInStatus(matchedUser) {
     this.setState({
-      userLoggedIn: status,
+      currentLoggedInUser: matchedUser,
     });
   }
+
   updateDisplay(arg) {
     this.setState({
       display: arg,
     });
   }
+
   render() {
     return (
       <div>
         <NavBar
           updateDisplay={this.updateDisplay}
-          userLoggedIn={this.state.userLoggedIn}
+          currentLoggedInUser={this.state.currentLoggedInUser}
+          updateLoggedInStatus={this.updateLoggedInStatus}
         />
+
         <div className="page-content">
-          {this.state.display === "signup" && <SignUp />}
+          {this.state.display === "home" && (
+            <Home updateDisplay={this.updateDisplay} />
+          )}
+          {this.state.display === "signup" && (
+            <SignUp updateDisplay={this.updateDisplay} />
+          )}
           {this.state.display === "signin" && (
             <SignIn
               updateDisplay={this.updateDisplay}
               updateLoggedInStatus={this.updateLoggedInStatus}
             />
           )}
-          {this.state.display === "dashboard" && <Dashboard />}
+          {this.state.display === "dashboard" && (
+            <Dashboard currentLoggedInUser={this.state.currentLoggedInUser} />
+          )}
         </div>
       </div>
     );

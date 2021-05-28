@@ -1,0 +1,25 @@
+.card-parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-box{
+    width: 500px;
+    border: 1px solid grey;
+    box-shadow: -1px 2px 20px -5px grey;
+    padding: 50px;
+    background-color: white;
+
+}
+
+.card-image{
+    margin: auto;
+    display: block;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.card-person-name, .card-person-email{
+    text-align: center;
+}

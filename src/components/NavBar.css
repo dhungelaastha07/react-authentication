@@ -10,7 +10,8 @@
 }
 
 .title{
-    color: #0FAF51;   
+    color: #0FAF51;  
+    cursor: pointer; 
 }
 
 .options{

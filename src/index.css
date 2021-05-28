@@ -8,6 +8,15 @@ body{
   margin: 0;
 }
 
+/* section style */
+.section{
+  max-width: 1440px;
+  /* height: 756px; */
+  background-color: red;
+}
+
+
+
 /* container style */
 
 .container{
@@ -84,3 +93,11 @@ label{
   margin-bottom: 30px;
 }
 
+/* messages to the user */
+.error-msg{
+  color: red;
+}
+
+.success-msg{
+  color: green;
+}
